@@ -28,10 +28,6 @@ export class SideBarCComponent implements OnInit {
       console.log(error);
     });
     this.sideBarToggled = false;
-    if(this.isMaestro)
-      this.getMenuMaestro();
-    else
-      this.getMenu();
   }
   get isMaestro(){
     return this.currentUser && this.currentUser.tipo === Role.Maestro;
