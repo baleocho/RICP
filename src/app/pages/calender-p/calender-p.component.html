@@ -1,9 +1,8 @@
 <!-- Page Content  -->
 <div class="wrapper">
         <app-nav-bar-c></app-nav-bar-c>
-        <app-slide-bar-c></app-slide-bar-c>
         <app-side-bar-c></app-side-bar-c>
-        <div class="content" [ngClass]="{'active': wrapperToggled}">
+        <div class="content active">
                 <h2 class="p-2 text-center">Calendario</h2>
                 <hr>
             <p-fullCalendar *ngIf="isAlumno" [events]="eventsCalender" [options]="optionsCalender" class="w-100"></p-fullCalendar> 

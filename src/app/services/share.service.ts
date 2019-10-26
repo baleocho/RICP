@@ -18,7 +18,7 @@ export class ShareService {
    * Asigna un nuevo valor a la variable compartida de slide-bar
    * @param data {boolean} Info que se pasara para el nuevo valor para abrir o cerrar slide bar
    */
-  changeWrapperToggled(data: boolean): void { this.wrapperToggled.next(data); }
+  changeWrapperToggled(data: boolean): void { this.wrapperToggled.next(false); }
     /**
    * Asigna un nuevo valor a la variable compartida de side-bar
    * @param data {boolean} Info que se pasara para el nuevo valor para abrir o cerrar side bar

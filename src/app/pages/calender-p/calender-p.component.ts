@@ -20,7 +20,7 @@ export class CalenderPComponent implements OnInit {
     //User information
     currentUser: User;
   H: any;
-  wrapperToggled: boolean = false;
+  wrapperToggled: boolean = true;
   today= new Date();
   value: Date;
   eventsSchedule: any;
