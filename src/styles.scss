@@ -1,1 +1,262 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+
+*{
+    font-family: "ubuntu-medium", sans-serif;
+    font-weight: initial;
+  }
+/* ---------------------------------------------------
+    MAIN COLORS
+----------------------------------------------------- */
+$bg-color-nav-bar              : #003650;
+$bg-color-slide-bar-right      : #00689C;
+$bg-color-title-slide-bar-right:#A81120;
+$bg-color-fullcalendar         :#A81120;
+
+/* ---------------------------------------------------
+    FULL CALENDAR STYLE
+----------------------------------------------------- */
+
+.fc-axis {
+    background-color: $bg-color-fullcalendar;
+}
+
+.fc-widget-header {
+    background-color: $bg-color-fullcalendar !important;
+    border          : none !important;
+    color           : white !important;
+}
+
+/* ---------------------------------------------------
+    GENERAL STYLE
+----------------------------------------------------- */
+.cursor-p {
+    cursor: pointer !important;
+}
+.pointer{
+    cursor: pointer !important;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/* unvisited link */
+a:link {
+    color: #00689C;
+}
+
+/* visited link */
+a:visited {
+    color: #00689C;
+}
+
+/* mouse over link */
+a:hover {
+    color: #00689C;
+}
+
+/* selected link */
+a:active {
+    color: #003650;
+}
+
+.btn-primary {
+    background-color: $bg-color-nav-bar !important;
+    border-color    : $bg-color-nav-bar !important;
+    color           : white !important;
+}
+
+.btn-primary:hover {
+    background-color: $bg-color-slide-bar-right !important;
+    border-color    : $bg-color-slide-bar-right !important;
+}
+
+.navbar {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE AND SLIDEBAR
+----------------------------------------------------- */
+body .ui-sidebar {
+    border: none !important;
+}
+
+.wrapper {
+    display: flex;
+    width  : 100%;
+}
+
+#sidebar {
+    width     : 20%;
+    position  : fixed;
+    top       : 0;
+    right     : 0;
+    height    : 100vh;
+    z-index   : 999;
+    background: #00689C;
+    color     : #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-right: -20%;
+}
+
+#sidebar .sidebar-header {
+    padding   : 20px;
+    background: #00689C;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+.content {
+    width     : calc(100% - 20%);
+    padding   : 40px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+}
+
+.content.active {
+    width: 100%;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-right: -20%;
+    }
+    .hideOnPhone{
+        display: none !important;
+    }
+    #sidebar.active {
+        margin-right: 0;
+    }
+
+    .content {
+        width: 100%;
+        padding-left:0;
+        padding-right: 0;
+    }
+
+    .content.active {
+        width: calc(100% - 20%);
+    }
+
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+/* ---------------------------------------------------
+    GENERAL ANIMATIONS ON CHANGE OF PAGE
+----------------------------------------------------- */
+
+@keyframes eraseOnChange {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.container,
+.content,
+#sidebar,
+.wrapper,
+.image-mobile,
+.form-mobile {
+    animation-name    : eraseOnChange;
+    animation-duration: 0.5s
+}
+
+/* ---------------------------------------------------
+    SCROLL STYLE
+----------------------------------------------------- */
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+    box-shadow: inset 0 0 5px grey;
+}
+.generalInformation{
+    transition: all .5s;
+}
+.generalInformation:hover{
+    transform: translateY(10px);
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background   : #FF8570;
+    border-radius: 10px;
+    transition   : background-color .3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #A81120;
+}
+
+.custom .ui-scrollpanel-wrapper {
+    border-right: none;
+}
+
+.custom .ui-scrollpanel-bar {
+    background-color: #FF8570;
+    border-radius   : 10px;
+    transition      : background-color .3s;
+    width           : 5px;
+}
+
+.custom .ui-scrollpanel-bar:hover {
+    background-color: #A81120;
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'ubuntu-light';
+    src        : url("./assets/fonts/Ubuntu//Ubuntu-Light.eot");
+    /* IE9 Compat Modes */
+    src: url("./assets/fonts/Ubuntu/Ubuntu-Light.woff2") format("woff2"), url("./assets/fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("./assets/fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'ubuntu-regular';
+    src        : url("./assets/fonts/Ubuntu/Ubuntu-Regular.eot");
+    /* IE9 Compat Modes */
+    src: url("./assets/fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("./assets/fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("./assets/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'ubuntu-medium';
+    src        : url("./assets/fonts/Ubuntu/Ubuntu-Medium.eot");
+    /* IE9 Compat Modes */
+    src: url("./assets/fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("./assets/fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("./assets/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'ubuntu-bold';
+    src        : url("./assets/fonts/Ubuntu/Ubuntu-Bold.eot");
+    /* IE9 Compat Modes */
+    src: url("./assets/fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("./assets/fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("./assets/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype");
+}

@@ -1,0 +1,68 @@
+<div class="wrapper">
+    <app-nav-bar-c></app-nav-bar-c>
+    <app-slide-bar-c></app-slide-bar-c>
+    <app-side-bar-c></app-side-bar-c>
+    <div class="content" [ngClass]="{'active': wrapperToggled}">
+        <div class="container">
+            <h2 class="p-2 text-center">Perfil</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <img src="/assets/img/avatar-default.png" class="img-fluid img-thumbnail rounded-circle"
+                            alt="avatar">
+                        <h6>Cambiar la fotografía...</h6>
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-9 personal-info">
+                    <div *ngIf="showAlert" class="alert alert-info alert-dismissable"> <a class="panel-close close"
+                            data-dismiss="alert">×</a><i class="fa fa-coffee"></i>Es una <strong>.alerta.</strong>
+                        Usarlo para mostrar mensajes.</div>
+                    <h3>Información personal</h3>
+
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Nombre:</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" value="{{currentUser.nombre}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Fecha de
+                            nacimiento:</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="date" data-date="" data-date-format="YYYY MMM DD"
+                                value="{{currentUser.fechaNacimiento.substring(0,10)}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Correo electrónico:</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="email" value="{{currentUser.correo}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Teléfono:</label>
+                        <div class="col-md-12">
+                            <input class="form-control" type="text" value="{{currentUser.telefono}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Descripción:</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control" rows="3" id="">-</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default"></label>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-primary ml-4">Guardar cambios</button><span></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

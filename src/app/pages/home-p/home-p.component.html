@@ -1,0 +1,127 @@
+<!-- Page Content  -->
+<div class="wrapper">
+  <app-nav-bar-c></app-nav-bar-c>
+  <app-slide-bar-c></app-slide-bar-c>
+  <app-side-bar-c></app-side-bar-c>
+  <div class="content" [ngClass]="{'active': wrapperToggled}">
+    <div *ngIf="isAlumno">
+      <h4 class="mt-4">Encuesta</h4>
+      <div class="row shadow bg-white rounded" style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+        <div class="card w-100 m-0">
+          <div class="card-body">
+            <h5 class="card-title">Saludos {{currentUser.nombre}}</h5>
+            <p class="card-text">Te invitamos a responder la encuesta para la evaluación de tus maestros.</p>
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-primary float-right">Ver más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isAdmin">
+      <h4 class="mt-4">Bienvenido</h4>
+      <div class="row shadow bg-white rounded" style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+        <div class="card w-100 m-0">
+          <div class="card-body">
+            <h5 class="card-title">Saludos administrador {{currentUser.nombre}}</h5>
+            <p class="card-text">Para configuraciones del sitio visita tu panel de control.</p>
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-primary float-right" routerLink="/dashboard">Ir a panel de control</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isMaestro">
+      <h4 class="mt-4">Bienvenido</h4>
+      <div class="row shadow bg-white rounded" style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+        <div class="card w-100 m-0 ">
+          <div class="card-body">
+            <h5 class="card-title">Saludos profesor {{currentUser.nombre}}</h5>
+            <p class="card-text">Para configuraciones de sus clases visite la página de la clase.</p>
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-primary float-right" routerLink="/subjects">Ir a todas mis clases</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isMaestro">
+        <h4 class="mt-4">Mis materias</h4>
+        <div class="row shadow bg-white rounded p-3"
+          style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+          <div class="col-12">
+            <div class="row">
+              <div *ngFor="let subject of materiasHorariosMaestro;" class="col-12 col-md-6 p-3">
+                <div class="card shadow bg-white rounded  generalInformation">
+                  <div class="card-body">
+                    <h5 class="card-title">{{subject.nombreClase}}</h5>
+                    <p class="card-text">{{subject.maestro}}</p>
+                    <p class="card-text">Clave de clase: {{subject.clave}}</p>
+                    <p class="card-text">Aula: {{subject.aula}} / Maestro: {{subject.nombre}}</p>
+                    <p class="card-text">Horarios: {{subject.horarios}}</p>
+                    <a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.clave]">Ir a materia</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary float-right" routerLink="/subjects">Ver más</button>
+          </div>
+        </div>
+      </div>
+
+    <div *ngIf="isAlumno">
+      <h4 class="mt-4">Mis materias</h4>
+      <div class="row shadow bg-white rounded p-3"
+        style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+        <div class="col-12">
+          <div class="row">
+            <div *ngFor="let subject of materiasHorariosAlumno;" class="col-12 col-md-6 p-3">
+              <div class="card shadow bg-white rounded  generalInformation">
+                <div class="card-body">
+                  <h5 class="card-title">{{subject.nombreClase}}</h5>
+                  <p class="card-text">{{subject.maestro}}</p>
+                  <p class="card-text">Clave de clase: {{subject.clave}}</p>
+                  <p class="card-text">Aula: {{subject.aula}} / Maestro: {{subject.nombre}}</p>
+                  <p class="card-text">Horarios: {{subject.horarios}}</p>
+                  <a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.clave]">Ir a materia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary float-right" routerLink="/subjects">Ver más</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isAlumno">
+      <h4 class="mt-4">Todas las materias</h4>
+      <div class="row shadow bg-white rounded p-3"
+        style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+        <div class="col-12">
+          <div class="row">
+            <div *ngFor="let subject of materiasHorarios;" class="col-12 col-md-6 p-3">
+              <div class="card shadow bg-white rounded  generalInformation">
+                <div class="card-body">
+                  <h5 class="card-title">{{subject.nombreClase}}</h5>
+                  <p class="card-text">{{subject.maestro}}</p>
+                  <p class="card-text">Clave de clase: {{subject.clave}}</p>
+                  <p class="card-text">Aula: {{subject.aula}} / Maestro: {{subject.nombre}}</p>
+                  <p class="card-text">Horarios: {{subject.horarios}}</p>
+                  <a href="#" class="btn btn-primary" routerLink="/subjects">Ir a materia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary float-right" routerLink="/subjects">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

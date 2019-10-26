@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <app-nav-bar-c></app-nav-bar-c>
+    <app-slide-bar-c></app-slide-bar-c>
+    <app-side-bar-c></app-side-bar-c>
+    <div class="content" [ngClass]="{'active': wrapperToggled}">
+        <h2 class="p-2 text-center">Mis materias</h2>
+        <hr>
+        <div *ngIf="isAlumno" class="row" style="margin: 0 !important;">
+            <div  *ngFor="let subject of materiasHorariosAlumno" class="col-md-6 p-3">
+              <div class="card shadow bg-white rounded  generalInformation">
+                <div class="card-body">
+                  <h5 class="card-title">{{subject.nombreClase}}</h5>
+                  <p class="card-text">{{subject.maestro}}</p>
+                  <p class="card-text">Clave de clase: {{subject.clave}}</p>
+                  <p class="card-text">Aula: {{subject.aula}}  /  Maestro: {{subject.nombre}}</p>
+                  <p class="card-text">Horarios: {{subject.horarios}}</p>
+                  <a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.clave]">Ir a materia</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isMaestro" class="row" style="margin: 0 !important;">
+              <div  *ngFor="let subject of materiasHorariosMaestro" class="col-md-6 p-3">
+                <div class="card shadow bg-white rounded  generalInformation">
+                  <div class="card-body">
+                    <h5 class="card-title">{{subject.nombreClase}}</h5>
+                    <p class="card-text">{{subject.maestro}}</p>
+                    <p class="card-text">Clave de clase: {{subject.clave}}</p>
+                    <p class="card-text">Aula: {{subject.aula}}  /  Maestro: {{subject.nombre}}</p>
+                    <p class="card-text">Horarios: {{subject.horarios}}</p>
+                    <a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.clave]">Ir a materia</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+</div>

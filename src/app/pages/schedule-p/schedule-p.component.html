@@ -1,0 +1,12 @@
+<!-- Page Content  -->
+<div class="wrapper">
+    <app-nav-bar-c></app-nav-bar-c>
+    <app-slide-bar-c></app-slide-bar-c>
+    <app-side-bar-c></app-side-bar-c>
+    <div class="content" [ngClass]="{'active': wrapperToggled}">
+            <h2 class="p-2 text-center">Horario</h2>
+            <hr>
+        <p-fullCalendar *ngIf="isAlumno" [events]="eventsSchedule" [options]="optionsSchedule"></p-fullCalendar>
+        <p-fullCalendar *ngIf="!isAlumno" [events]="eventsScheduleOtro" [options]="optionsSchedule"></p-fullCalendar>
+    </div>
+</div>

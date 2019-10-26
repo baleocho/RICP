@@ -1,0 +1,194 @@
+body {
+	font-family: Helvetica, sans-serif;
+	color: #444444;
+}
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid #268EFF;
+}
+
+.menu-header {
+	height: 50px;
+}
+
+.details-heading,
+.agenda-heading {
+	font-weight: normal;
+	color: #eee;
+	margin-left: 65px;
+	float: left;
+	font-size: 20px;
+}
+
+.menu-header-active {
+	color: #444444;
+	border-bottom: 1px solid #268EFF;
+	height: 33px;
+}
+
+.agenda {
+	margin: 0px;
+	background: #F8F8F8;
+	padding: 0px;
+	counter-reset: item;
+	list-style-type: none;
+}
+
+.agenda li:before {
+	content: counter(item) "  ";
+	counter-increment: item;
+	margin-right: 30px;
+}
+
+.agenda li {
+	cursor: pointer;
+	font-size: 14px;
+	font-family: Helvetica, sans-serif;
+	padding: 20px 30px;
+	font-weight: bold;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.agenda-item-active {
+	background: #fff;
+}
+
+.last-agenda-item {
+	opacity: 0.5;
+}
+
+.last-agenda-item input {
+	background: none;
+	border: none;
+	outline: 0;
+}
+
+.menu-actions {
+	height: 50px;
+}
+
+button.publish {
+	font-size: 13px;
+	font-weight: bold;
+	background: #268EFF;
+	color: #fff;
+	margin: 15px;
+	padding: 5px 20px;
+	border: none;
+	border-radius: 5px;
+}
+
+.fa-files-o {
+	float: right;
+	margin: 15px;
+	font-size: 20px;
+	color: #268EFF;
+	cursor: pointer;
+}
+
+.add-documents-agenda-container {
+	display: none;
+	width: 600px;
+	box-shadow: 1px 1px 6px 0px #444444;
+	float: right;
+	z-index: 1;
+	margin-right: 20px;
+	background: #fff;
+	min-height: 400px;
+	box-shadow: 2px solid #eee;
+}
+
+.add-documents-agenda-header {
+	height: 50px;
+	border-bottom: 1px solid #eee;
+	padding-left: 10px;
+	background: #F8F8F8;
+}
+
+.add-documents-agenda-header h2 {
+	font-size: 15px;
+	float: left;
+	width: 65%;
+	margin-top: 15px;
+}
+
+.close-form {
+	margin: 15px 0px 0px 180px;
+	float: left;
+	margin: 15px 0px 0px 180px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#drop-documents {
+	margin: 10px 20px;
+	border: 3px dashed #268EFF;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #268EFF;
+}
+
+.fa-plus {
+	cursor: pointer;
+	color: #268EFF;
+}
+
+input#files {
+	display: none;
+}
+
+#file-upload-browse {
+	margin-right: 20px;
+	float: right;
+	font-size: 13px;
+	color: #268EFF;
+}
+
+button.upload-files {
+	font-size: 13px;
+	font-weight: bold;
+	background: #268EFF;
+	color: #fff;
+	margin-top: 30px;
+	margin-left: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+ul.document-upload {
+	font-size: 14px;
+	list-style: none;
+	padding: 0;
+	margin-left: 20px;
+}
+
+.document-upload li {
+	margin-bottom: 10px;
+}
+
+.document-agenda-item {
+	color: #268EFF;
+	font-size: 11px;
+	font-weight: bold;
+	margin-left: 40px;
+	margin-top: 5px;
+}
+
+.counter {
+	font-size: 10px;
+	background: #268EFF;
+	color: #fff;
+	border-radius: 50%;
+	border: 2px solid #FFF;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	float: right;
+}

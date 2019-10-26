@@ -1,0 +1,27 @@
+.nav-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #003650;
+    height: 40px !important;
+}
+
+.d-mobile-chat {
+    position: fixed !important;
+    z-index: 1001 !important;
+    width: 100% !important;
+    height: 100%;
+    top: 30px;
+    left: 0;
+}
+
+.d-mobile-chat-messages {
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.d-mobile-chat-vermas {
+    position: fixed !important;
+    bottom: 0;
+}

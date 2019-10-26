@@ -1,0 +1,124 @@
+<!-- Page Content  -->
+<div class="wrapper">
+    <app-nav-bar-c></app-nav-bar-c>
+    <app-slide-bar-c></app-slide-bar-c>
+    <app-side-bar-c></app-side-bar-c>
+    <div class="content" [ngClass]="{'active': wrapperToggled}">
+        <div class="container">
+            <h2 class="p-2 text-center">Materia</h2>
+            <hr>
+            <div *ngIf="currentMateria" class="row">
+                <div class="col-md-12 personal-info">
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Nombre de la
+                            materia</label>
+                        <div class="col-md-12">
+                            <input class="form-control form-control-sm" type="text" value="{{currentMateria.nombreClase}}" *ngIf="!isMaestro"
+                                readonly>
+                            <input class="form-control form-control-sm" type="text" value="{{currentMateria.nombreClase}}" *ngIf="isMaestro">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label label-default="" class="col-md-3 control-label label-default">Maestro</label>
+                                <div class="col-md-12">
+                                    <input *ngIf="isMaestro"class="form-control form-control-sm" type="text" value="{{currentMateria.nombre}}">
+                                    <input *ngIf="!isMaestro"class="form-control form-control-sm" type="text" value="{{currentMateria.nombre}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label label-default="" class="col-md-12 control-label label-default">Aula</label>
+                                <div class="col-md-12">
+                                    <input *ngIf="isMaestro" class="form-control form-control-sm" type="text" value="{{currentMateria.aula}}">
+                                    <input *ngIf="!isMaestro" class="form-control form-control-sm" type="text" value="{{currentMateria.aula}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!isMaestro" class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Descripción:</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control form-control-sm" type="text" rows="auto"
+                                readonly>{{currentMateria.descripcion}}</textarea>
+                        </div>
+                    </div>
+                    <div *ngIf="isMaestro" class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Descripción:</label>
+                        <div class="col-md-12">
+                            <textarea class="form-control form-control-sm" type="text" rows="auto">{{currentMateria.descripcion}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label label-default="" class="col-md-3 control-label label-default">Documentos de
+                            apoyo:</label>
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo.pdf" *ngIf="!isMaestro" readonly>
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo.pdf" *ngIf="isMaestro">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <li class="pi pi-download mr-1"></li>Descargar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo2.pdf" *ngIf="!isMaestro" readonly>
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo2.pdf" *ngIf="isMaestro">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <li class="pi pi-download mr-1"></li>Descargar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo3.pdf" *ngIf="!isMaestro" readonly>
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo3.pdf" *ngIf="isMaestro">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <li class="pi pi-download mr-1"></li>Descargar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-12" *ngIf="isMaestro">
+                                <button type="submit" class="btn btn-primary btn-block">Guardar
+                                    cambios</button><span></span>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <h3 class="text-center">Actividades</h3>
+                    <p-scrollPanel [style]="{width: '100%', height: '150px'}" styleClass="custom">
+                        <div class="container no-s" *ngFor="let actividad of activitysMateria; index as i">
+                            <div class="row day-div">
+                                <div class="col-12 text-center bg-danger text-white">Actividad {{i + 1}}</div>
+                            </div>
+                            <div class="row task-div p-1">
+                                <div class="col-9"><h4>{{actividad.nombreActividad}}</h4></div>
+                                <div class="col-3 text-muted" style="text-align: right;">Fecha límie: {{actividad.fechaEntrega.slice(0,10)}}</div>
+                                <div class="col-12">{{actividad.descripcionActividad}}</div>
+                            </div>
+                            <div class="input-group my-3">
+                                <input type="text" class="form-control" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" value="Archivo.pdf" readonly>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <li class="pi pi-download mr-1"></li>Descargar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </p-scrollPanel>
+                    <div *ngIf="isMaestro" class="btn btn-primary btn-block mt-4">Agregar actividad</div>
+                </div>
+                <hr>
+            </div>
+        </div>

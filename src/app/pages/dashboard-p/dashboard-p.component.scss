@@ -1,0 +1,24 @@
+.nav-fixed{
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #003650;
+    height: 40px !important;
+}
+.pointer{
+    transition: all .5s;
+}
+.pointer:hover{
+    background-color: #003650;
+    transform: translateX(5px);
+}
+.ui-inputtext {
+    width: 100% !important;
+}
+.generalInformation{
+    transition: all .5s;
+}
+.generalInformation:hover{
+    transform: translateY(10px);
+}

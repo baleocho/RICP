@@ -1,0 +1,65 @@
+<!-- Page Content  -->
+<div class="wrapper">
+    <app-nav-bar-c></app-nav-bar-c>
+    <app-slide-bar-c></app-slide-bar-c>
+    <app-side-bar-c></app-side-bar-c>
+    <div class="content" [ngClass]="{'active': wrapperToggled}"></div>
+      <div class="container">
+                <div class="menu-header">
+                    <h2 class="details-heading">Details</h2>
+                    <h2 class="agenda-heading menu-header-active">Agenda</h2>
+                </div>
+                <!-- end menu header -->
+                <div class="details-container"></div>
+                <!-- start upload documents -->
+                <div class="add-documents-agenda-container">
+                    <div class="add-documents-agenda-header">
+                        <h2>Add documents to agenda items</h2>
+                        <span class="fa fa-times close-form" aria-hidden="true"></span>
+                    </div>
+                    <div class="upload-form">
+                        <form id="file-upload-form" action="" enctype="multipart/form-data">
+                            <input type="file" id="files" name="files[]" multiple />
+                            <div id="drop-documents">
+                                <p><span class="fa fa-plus" aria-hidden="true"></span> Drop new documents here</p>
+                            </div>
+                            <label for="files"><span id="file-upload-browse">or Browse your computer</span></label>
+                            <output for="file-upload" id="messages"></output>
+                            <button class="upload-files">Upload with magic</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- end upload documents -->
+                <!-- start agenda -->
+                <div class="agenda-container">
+                    <ol class="agenda">
+                        <li>Admin
+                            <div class="counter"></div>
+                        </li>
+                        <li>Minutes Last Meeting
+                            <div class="counter"></div>
+                        </li>
+                        <li>Performance / Key initiatives
+                            <div class="counter"></div>
+                        </li>
+                        <li class="agenda-item-active">Management Update
+                            <div class="counter"></div>
+                        </li>
+                        <li>Country Manager Outlook
+                            <div class="counter"></div>
+                        </li>
+                        <li>Sales Marketing
+                            <div class="counter"></div>
+                        </li>
+                        <li class="last-agenda-item">
+                            <input type="text" name="new-agenda-item" placeholder="Enter a new agenda item..." /> <span id="new-agenda-item-btn" class="fa fa-plus" aria-hidden="true"></span></li>
+                    </ol>
+                </div>
+                <!-- end agenda -->
+                <div class="menu-actions">
+                    <button class="publish">Publish</button>
+                    <span class="fa fa-files-o" aria-hidden="true"></span>
+                </div>
+            </div>
+            <!-- end container -->
+</div>

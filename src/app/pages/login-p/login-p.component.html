@@ -1,0 +1,128 @@
+<div class="row align-items-center bg-light" style="margin: 0 !important;">
+    <div [ngClass]="{'col-md-8':!toggleRegistro,'col-md-4':toggleRegistro}" class="col-12 align-items-center p-0">
+        <img src="../../../assets/img/bg_csc.jpg" width="100%" height="{{innerHeight}}" class="image-mobile">
+    </div>
+    <div [ngClass]="{'col-md-4':!toggleRegistro,'col-md-8':toggleRegistro}" class="col-12 p-4">
+        <div class="container form-mobile">
+            <!--SIGNIN and SIGNUP-->
+            <h2 class="text-center">RICP</h2>
+            <form *ngIf="!toggleRegistro" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h4 class=text-center>Inicio de sesión</h4>
+                <div class="form-group">
+                    <label for="username">Usuario</label>
+                    <input id="username" type="text" formControlName="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Tu usuario es requerida</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">La contraseña es requerida</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary btn-block mt-5">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Iniciar sesión
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+
+            <form *ngIf="toggleRegistro" [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+                <h4>Registro de alumno</h4>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="usernameReg">Nombre completo</label>
+                            <input type="text" formControlName="usernameReg" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.usernameReg.errors }" />
+                            <div *ngIf="submitted && r.usernameReg.errors" class="invalid-feedback">
+                                <div *ngIf="r.usernameReg.errors.required">El nombre completo es requerido</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="matriculaReg">Matrícula</label>
+                            <input type="text" min="10" max="10" formControlName="matriculaReg" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.matriculaReg.errors }" />
+                            <div *ngIf="submitted && r.matriculaReg.errors" class="invalid-feedback">
+                                <div *ngIf="r.matriculaReg.errors.required">La matricula es requerida</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="emailReg">Correo electrónico</label>
+                            <input type="email" min="10" max="10" formControlName="emailReg" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.emailReg.errors }" />
+                            <div *ngIf="submitted && r.emailReg.errors" class="invalid-feedback">
+                                <div *ngIf="r.emailReg.errors.required">El correo electronico es requerido</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="phoneReg">Número telefónico</label>
+                            <input type="text" min="10" max="10" formControlName="phoneReg" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.phoneReg.errors }" />
+                            <div *ngIf="submitted && r.phoneReg.errors" class="invalid-feedback">
+                                <div *ngIf="r.phoneReg.errors.required">El correo electronico es requerido</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="daateReg">Fecha de nacimiento</label>
+                            <input type="date" min="10" max="10" formControlName="dateReg" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.dateReg.errors }" />
+                            <div *ngIf="submitted && r.dateReg.errors" class="invalid-feedback">
+                                <div *ngIf="r.dateReg.errors.required">El correo electronico es requerido</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="passwordReg">Ingresa una contraseña</label>
+                            <input type="password" formControlName="passwordReg" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.passwordReg.errors }" />
+                            <div *ngIf="submitted && r.passwordReg.errors" class="invalid-feedback">
+                                <div *ngIf="r.passwordReg.errors.required">La contraseña es requerida</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="passwordRegConfirm">Repite la contraseña</label>
+                            <input type="password" formControlName="passwordRegConfirm" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && r.passwordRegConfirm.errors }" />
+                            <div *ngIf="submitted && r.passwordRegConfirm.errors" class="invalid-feedback">
+                                <div *ngIf="r.passwordRegConfirm.errors.required">La contraseña es requerida</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary btn-block mt-5">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Registrarse
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+            <!--
+            <button class="btn btn-outline-secondary btn-block mt-3"
+                (click)="toggleRegistro = !toggleRegistro">{{(toggleRegistro)?"Iniciar sesión":"Registrate como alumno"}}
+            </button>
+            -->
+            <div *ngIf="success" class="alert alert-success mt-3 mb-0">Usuario registrado</div>
+        </div>
+    </div>
+</div>
