@@ -21,14 +21,14 @@ const routes: Routes = [
   { path: '', component: HomePComponent, canActivate: [AuthGuard] },
   { path: "home", component: HomePComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginPComponent },
-  { path: "schedule", component: SchedulePComponent, canActivate: [AuthGuard] },
+  { path: "ReporteMaquinas", component: SchedulePComponent, canActivate: [AuthGuard] },
   { path: "uploadactivity", component: UploadactivityPComponent },
   { path: "profile", component: ProfilePComponent, canActivate: [AuthGuard] },
-  { path: "subjects", component: SubjectsPComponent, canActivate: [AuthGuard] },
+  { path: "OrdenesDisponibles", component: SubjectsPComponent, canActivate: [AuthGuard] },
   { path: "subject/:id", component: SubjectPComponent, canActivate: [AuthGuard] },
   { path: "dashboard", component: DashboardPComponent, canActivate: [AuthGuard], data: { roles: [Role.Administrador] } },
-  { path: "agenda", component: AgendaPComponent, canActivate: [AuthGuard] },
-  { path: "calender", component: CalenderPComponent, canActivate: [AuthGuard] },
+  { path: "OrdenesEnPiso", component: AgendaPComponent, canActivate: [AuthGuard] },
+  { path: "Alertas", component: CalenderPComponent, canActivate: [AuthGuard] },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
