@@ -16,7 +16,7 @@ export class HomePComponent implements OnInit {
   //Colocar spinner
   loading: boolean = false;
   //Slide derecho cerrado
-  wrapperToggled: boolean = false;
+  wrapperToggled: boolean = true;
   //data para cards
   data: any;
   //User information
