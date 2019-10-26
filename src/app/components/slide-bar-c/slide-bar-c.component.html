@@ -1,6 +1,6 @@
 <!-- Slidebar  -->
 <nav id="sidebar" [ngClass]="{'active': wrapperToggled}" class="pt-5 textStyle" >
-    <ul class="list-unstyled components" style="removeElement()">
+    <ul class="list-unstyled components">
         <li>
 
             <h5 class="p-1 text-center titleSide" routerLink="/schedule">Horario</h5>
@@ -32,11 +32,5 @@
             <p-fullCalendar *ngIf="!isAlumno" [events]="eventsScheduleOtro" [options]="optionsCalender" class="w-100"></p-fullCalendar>
         </li>
     </ul>
-
-    <script>
-        function removeElement() {
-          document.getElementById("imgbox1").style.display = "none";
-        }
-    </script>
 
 </nav>
