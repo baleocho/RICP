@@ -29,8 +29,14 @@ export class SideBarCComponent implements OnInit {
     });
     this.sideBarToggled = false;
   }
+  get isAdmin() {
+    return this.currentUser && this.currentUser.tipo === Role.Administrador;
+  }
   get isMaestro(){
     return this.currentUser && this.currentUser.tipo === Role.Maestro;
+  }
+  get isAlumno(){
+    return this.currentUser && this.currentUser.tipo === Role.Alumno;
   }
   getMenu() {
     let body = {

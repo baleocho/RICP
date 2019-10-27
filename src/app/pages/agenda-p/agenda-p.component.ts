@@ -87,7 +87,8 @@ export class AgendaPComponent implements OnInit {
           );
         }
         this.almacenSelectedColumns = this.colsAlmacen;
-        console.log(this.almacenSelectedColumns);
+        console.log(this.colsAlmacen);
+        console.log(this.rowsAlmacen);
       }, error => {
         console.log(error);
       });

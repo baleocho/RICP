@@ -16,6 +16,19 @@
     /* Disable Android and iOS callouts*/
     user-select: none;
 }
+.buttonTrans2 {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    border-radius: 50%;
+-moz-border-radius: 50%;
+-webkit-border-radius: 50%;
+border: 1px solid #000000;
+  }
+  
 .task-div{
     cursor: pointer !important;
     transition: all .3s;

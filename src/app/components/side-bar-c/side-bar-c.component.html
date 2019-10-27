@@ -1,19 +1,26 @@
 <p-sidebar [(visible)]="sideBarToggled" position="left" [style]="{background:'#003650', color:'white',padding:'0px'}">
-        <h5 class="mt-4 m-4 text-center">SIIE</h5>
+        <h5 class="mt-4 m-4 text-center">RICP</h5>
         <hr class="bg-white mx-4">
         <div class="w-100" style="position: fixed !important; overflow-y: scroll; height: 80%;">
-                <div routerLink="/home" routerLinkActive="active" class="navbar-toggler menuItemSideBar pointer">
+                <div routerLink="/OrdenesEnPiso" routerLinkActive="active"
+                        class="navbar-toggler menuItemSideBar pointer">
                         <h6><i class="pi pi-home mr-2" style="font-size: 1rem;"></i>Ordenes en piso</h6>
                 </div>
-                <div routerLink="/home" routerLinkActive="active" class="navbar-toggler menuItemSideBar pointer">
-                        <h6><i class="pi pi-comment mr-2" style="font-size: 1rem;"></i>Todas las alertas</h6>
+                <div routerLink="/Alertas" routerLinkActive="active" class="navbar-toggler menuItemSideBar pointer">
+                        <h6><i class="pi pi-globe mr-2" style="font-size: 1rem;"></i>Todas las alertas</h6>
                 </div>
-                <div routerLink="/home" routerLinkActive="active" class="navbar-toggler menuItemSideBar pointer">
-                        <h6><i class="pi pi-globe mr-2" style="font-size: 1rem;"></i>Nuevas ordenes</h6>
+                <div routerLink="/OrdenesEnPiso" routerLinkActive="active"
+                        class="navbar-toggler menuItemSideBar pointer">
+                        <h6><i class="pi pi-table mr-2" style="font-size: 1rem;"></i>Nuevas ordenes</h6>
                 </div>
-                <h6 class="m-4">Herramientas de P.M.</h6>
+                <div routerLink="/ReporteMaquinas" routerLinkActive="active"
+                        class="navbar-toggler menuItemSideBar pointer">
+                        <h6><i class="pi pi-file mr-2" style="font-size: 1rem;"></i>Reporte de máquinas</h6>
+                </div>
+                <h6 *ngIf="isAdmin" class="m-4">Herramientas de P.M.</h6>
 
-                <div routerLink="/schedule" routerLinkActive="active" class="navbar-toggler menuItemSideBar pointer">
+                <div *ngIf="isAdmin" routerLink="/OrdenesDisponibles" routerLinkActive="active"
+                        class="navbar-toggler menuItemSideBar pointer">
                         <h6><i class="pi pi-table mr-2" style="font-size: 1rem;"></i>Ordenes en sistema</h6>
                 </div>
                 <h6 class="m-4">Opciones</h6>
