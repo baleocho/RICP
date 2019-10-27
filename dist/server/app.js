@@ -20,7 +20,7 @@ const usersHarcoded = [
     {
         idUsuario: 1,
         matricula: '123',
-        nombre: 'Brian Alejandro Ochoa Duran',
+        nombre: 'Jorge Castillo ',
         fechaNacimiento: '2002 - 02 - 16T06: 00: 00.000Z',
         correo: 'brian16ochoa@admin.com',
         telefono: '3310800159',
@@ -34,7 +34,7 @@ const usersHarcoded = [
     {
         idUsuario: 2,
         matricula: '321',
-        nombre: 'Brian Alejandro Ochoa Duran',
+        nombre: 'Manuel Estrada',
         fechaNacimiento: '2002 - 02 - 16T06: 00: 00.000Z',
         correo: 'brian16ochoa@admin.com',
         telefono: '3310800159',
@@ -48,7 +48,7 @@ const usersHarcoded = [
     {
         idUsuario: 3,
         matricula: '456',
-        nombre: 'Brian Alejandro Ochoa Duran',
+        nombre: 'Brian Ochoa',
         fechaNacimiento: '2002 - 02 - 16T06: 00: 00.000Z',
         correo: 'brian16ochoa@admin.com',
         telefono: '3310800159',
@@ -162,13 +162,26 @@ app.get('*', (req, res) => {
 app.get('/login', jwtExpress(), (req, res) => {
     res.sendFile(__dirname + '/siie/index.html');
 });
-app.get('/schedule', (req, res) => {
+app.get('/ReporteMaquinas', (req, res) => {
+    res.sendFile(__dirname + '/siie/index.html');
+});
+app.get('/uploadactivity', (req, res) => {
     res.sendFile(__dirname + '/siie/index.html');
 });
 app.get('/profile', (req, res) => {
     res.sendFile(__dirname + '/siie/index.html');
 });
+app.get('/OrdenesDisponibles', (req, res) => {
+    res.sendFile(__dirname + '/siie/index.html');
+});
+app.get('/OrdenesEnPiso', (req, res) => {
+    res.sendFile(__dirname + '/siie/index.html');
+});
+app.get('/Alertas', (req, res) => {
+    res.sendFile(__dirname + '/siie/index.html');
+});
 app.get('/home', (req, res) => {
     res.sendFile(__dirname + '/siie/index.html');
 });
+
 app.use('/', express.static(__dirname + '/siie'));

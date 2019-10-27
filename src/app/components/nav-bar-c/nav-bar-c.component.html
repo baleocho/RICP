@@ -7,7 +7,7 @@
                 </div>
                 <a *ngIf="isMaestro" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP Gerente</a>
                 <a *ngIf="isAlumno" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP Operador</a>
-                <a *ngIf="isAdmin" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP Product Manager</a>
+                <a *ngIf="isAdmin" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP Project Manager</a>
             </div>
         </div>
         <ul class="nav navbar-nav navbar-right nav-flex-icons">
@@ -48,7 +48,7 @@
                                 <small class="text-muted">Hace 6 días</small>
                             </div>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <a routerLink="/Alertas" class="list-group-item list-group-item-action flex-column align-items-start">
                             <h6 class="text-center" style="font-size:1rem;">Ver más</h6>
                         </a>
                     </div>
