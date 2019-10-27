@@ -108,7 +108,7 @@ export class AgendaPComponent implements OnInit {
       const worksheet = xlsx.utils.json_to_sheet(this.rowsAlmacen);
       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-      this.saveAsExcelFile(excelBuffer, "primengTable");
+      this.saveAsExcelFile(excelBuffer, "reporteTodaslasOrdenes");
     });
   }
 

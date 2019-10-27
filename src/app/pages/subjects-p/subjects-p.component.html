@@ -1,36 +1,63 @@
 <div class="wrapper">
-    <app-nav-bar-c></app-nav-bar-c>
-    <app-side-bar-c></app-side-bar-c>
-    <div class="content active">
-        <h2 class="p-2 text-center">Mis materias</h2>
-        <hr>
-        <div *ngIf="isAlumno" class="row" style="margin: 0 !important;">
-            <div  *ngFor="let subject of materiasHorariosAlumno" class="col-md-6 p-3">
-              <div class="card shadow bg-white rounded  generalInformation">
-                <div class="card-body">
-                  <h5 class="card-title">{{subject.nombreClase}}</h5>
-                  <p class="card-text">{{subject.maestro}}</p>
-                  <p class="card-text">Clave de clase: {{subject.clave}}</p>
-                  <p class="card-text">Aula: {{subject.aula}}  /  Maestro: {{subject.nombre}}</p>
-                  <p class="card-text">Horarios: {{subject.horarios}}</p>
-                  <a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.clave]">Ir a materia</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="isMaestro" class="row" style="margin: 0 !important;">
-              <div  *ngFor="let subject of materiasHorariosMaestro" class="col-md-6 p-3">
-                <div class="card shadow bg-white rounded  generalInformation">
-                  <div class="card-body">
-                    <h5 class="card-title">{{subject.nombreClase}}</h5>
-                    <p class="card-text">{{subject.maestro}}</p>
-                    <p class="card-text">Clave de clase: {{subject.clave}}</p>
-                    <p class="card-text">Aula: {{subject.aula}}  /  Maestro: {{subject.nombre}}</p>
-                    <p class="card-text">Horarios: {{subject.horarios}}</p>
-                    <a href="#" class="btn btn-primary" [routerLink]="['/subject', subject.clave]">Ir a materia</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-    </div>
+  <app-nav-bar-c></app-nav-bar-c>
+  <app-side-bar-c></app-side-bar-c>
+  <div class="content active">
+    <h2 class="p-2 text-center">Todas las ordenes</h2>
+    <hr>
+    <p-table #dtUsers [columns]="almacenSelectedColumns" [value]="rowsAlmacen" [resizableColumns]="true"
+      columnResizeMode="expand" [paginator]="true" [rows]="10" selectionMode="single">
+      <ng-template pTemplate="caption">
+        <div class="ui-helper-clearfix my-2" style="text-align: left">
+          <button type="button" pButton icon="pi pi-download" iconPos="left" label="EXCEL" (click)="exportExcel()"
+            style="margin-right: 0.5em;" class="ui-button-success"></button>
+        </div>
+
+        <div style="text-align: right; float: right">
+          <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+          <input type="text" pInputText size="50" placeholder="Global Filter"
+            (input)="dtUsers.filterGlobal($event.target.value, 'contains')" style="width:50% !important;">
+        </div>
+
+        <div style="text-align:left;">
+          <p-multiSelect [options]="colsAlmacen" [(ngModel)]="almacenSelectedColumns" optionLabel="header"
+            selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" defaultLabel="Choose Columns">
+          </p-multiSelect>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+              ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+            </p-sortIcon>
+          </th>
+        </tr>
+        <tr>
+          <th *ngFor="let col of columns">
+            <input pInputText type="text" (input)="dtUsers.filter($event.target.value, col.field, col.filterMatchMode)">
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns" class="ui-resizable-column">
+            <span *ngIf="col.field == 'OPCIONES'">
+              <button class="btn btn-success btn-block" style="padding: 0px 10px 0px 10px;" type="button">
+                Liberar orden
+              </button>
+            </span>
+            <span *ngIf="col.field == 'PRIORIDAD'">
+              <select>
+                <option value="Alta">ALTA</option>
+                <option value="Media">MEDIA</option>
+                <option value="Normal">NORMAL</option>
+              </select>
+            </span>
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
