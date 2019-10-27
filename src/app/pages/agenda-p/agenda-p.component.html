@@ -7,122 +7,51 @@
         <!--***************Ordenes**************-->
         <div class="mb-5">
             <hr>
-            <p-table #dtUsers [columns]="" [value]="" [resizableColumns]="true"
-                columnResizeMode="expand" [paginator]="true" [rows]="5" selectionMode="single"
-                >
-                <ng-template pTemplate="caption">
-                    <div style="text-align: right; float: right">
-                        <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                        <input type="text" pInputText size="50" placeholder="Global Filter"
-                            (input)="dtUsers.filterGlobal($event.target.value, 'contains')"
-                            style="width:50% !important;">
-                    </div>
-                    <div style="text-align:left;">
-                        <p-multiSelect [options]="" optionLabel="header"
-                            selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}"
-                            defaultLabel="Choose Columns"></p-multiSelect>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
-                            {{col.header}}
-                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                                ariaLabelDesc="Activate to sort in descending order"
-                                ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th *ngFor="let col of columns">
-                            <input pInputText type="text"
-                                (input)="dtUsers.filter($event.target.value, col.field, col.filterMatchMode)">
-                        </th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr [pSelectableRow]="rowData">
-                        <td *ngFor="let col of columns" class="ui-resizable-column">
-                            {{rowData[col.field]}}
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-            <p-dialog header="" [responsive]="true" showEffect="fade"
-                [modal]="true" [style]="{width: '500px'}">
-                <div class="ui-g ui-fluid">
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="STATUS">STATUS</label>
+            <p-table #dtUsers [columns]="almacenSelectedColumns" [value]="rowsAlmacen" [resizableColumns]="true"
+            columnResizeMode="expand" [paginator]="true" [rows]="10" selectionMode="single"
+            >
+            <ng-template pTemplate="caption">
+                    <div class="ui-helper-clearfix my-2" style="text-align: left">
+                            <button type="button" pButton icon="pi pi-file-excel" iconPos="left" label="EXCEL" (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
                         </div>
-                        <div class="ui-g-8">
-                            <input type="text" pInputText id="STATUS"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="OPERATION_STATUS">OPERATION_STATUS</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="text" pInputText id="OPERATION_STATUS"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="MACHINE_TIPE">MACHINE_TIPE</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="text" pInputText id="MACHINE_TIPE"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="MACHINE_MODEL">MACHINE_MODEL</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="text" pInputText id="MACHINE_MODEL"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="ORDER_STATUS">ORDER_STATUS</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="text" pInputText id="ORDER_STATUS"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="DATE_RECEIVED_MFGN">DATE_RECEIVED_MFGN</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="date" pInputText id="DATE_RECEIVED_MFGN"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="CURRENT_DATE_">CURRENT_DATE_</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="date" pInputText id="CURRENT_DATE_"/>
-                        </div>
-                    </div>
-                    <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="CURRENT_TIME_">CURRENT_TIME_</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input type="time" pInputText id="CURRENT_TIME_"/>
-                        </div>
-                    </div>
+
+                <div style="text-align: right; float: right">
+                    <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText size="50" placeholder="Global Filter"
+                        (input)="dtUsers.filterGlobal($event.target.value, 'contains')"
+                        style="width:50% !important;">
                 </div>
 
-                <p-footer>
-                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                        <button type="button" class="btn btn-danger" pButton icon="pi pi-save"
-                            label="Guardar"></button>
-                    </div>
-                </p-footer>
-            </p-dialog>
+                <div style="text-align:left;">
+                    <p-multiSelect [options]="colsAlmacen" [(ngModel)]="colsAlmacen" optionLabel="header"
+                        selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}"
+                        defaultLabel="Choose Columns"></p-multiSelect>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
+                        {{col.header}}
+                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                            ariaLabelDesc="Activate to sort in descending order"
+                            ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        <input pInputText type="text"
+                            (input)="dtUsers.filter($event.target.value, col.field, col.filterMatchMode)">
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
         </div>
     </div>
 </div>

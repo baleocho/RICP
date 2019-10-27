@@ -8,6 +8,7 @@ const jwtExpress = require('./_helpers/jwt');
 const jwt = require('jsonwebtoken');
 const errorHandler = require('./error-handler');
 const keys = require('./_helpers/keys.json');
+const calls = require('./calls.js');
 
 //librerias para subir archivos 
 const multipart = require('connect-multiparty');
@@ -44,6 +45,20 @@ const usersHarcoded = [
         fechaCreacion: '2019 - 08 - 03T05: 27: 42.000Z',
         fechaModificacion: '2019 - 08 - 03T05: 27: 42.000Z'
     },
+    {
+        idUsuario: 3,
+        matricula: '456',
+        nombre: 'Brian Alejandro Ochoa Duran',
+        fechaNacimiento: '2002 - 02 - 16T06: 00: 00.000Z',
+        correo: 'brian16ochoa@admin.com',
+        telefono: '3310800159',
+        descripcion: 'Shoot your shot',
+        contrasena: 'brian123',
+        fotoUrl: '',
+        tipo: 'Maestro',
+        fechaCreacion: '2019 - 08 - 03T05: 27: 42.000Z',
+        fechaModificacion: '2019 - 08 - 03T05: 27: 42.000Z'
+    }
 ];
 
 /*-------------GENERAL CONFIGS-------------*/
@@ -77,6 +92,18 @@ app.use(function (req, res, next) {
 //INIT SERVER
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
+});
+
+/*-------------------CALLS------------------*/
+///DATA FOR MENU OF QUERYS IN HOME
+/*PARAMS:
+    WHITOUT PARAMS
+*/
+app.get('/api/getAlmacen', (req, res) => {
+    calls.getAlmacen().then(resp => {
+        res.send(resp);
+        return resp;
+    }).catch(e => console.log(e));
 });
 
 
