@@ -5,15 +5,19 @@
                 <div *ngIf="!isAlumno" (click)="toggleMenuSideBar()" class="nav-link cursor-p">
                     <i class="pi pi-bars mt-1" style="font-size: 1rem;"></i>
                 </div>
-                <a *ngIf="isMaestro" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP Gerente</a>
-                <a *ngIf="isAlumno" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP Operador</a>
-                <a *ngIf="isAdmin" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP PM</a>
+                <a *ngIf="isMaestro" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP
+                    Gerente</a>
+                <a *ngIf="isAlumno" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP
+                    Operador</a>
+                <a *ngIf="isAdmin" routerLink="/home" class="navbar-brand ml-2 my-auto" style="font-size: 1rem;">RICP
+                    PM</a>
             </div>
         </div>
         <ul class="nav navbar-nav navbar-right nav-flex-icons">
             <li class="nav-item avatar my-auto">
                 <a class="nav-link p-0" routerLink="/profile">
-                    <img src="../../../assets/img/faces-clipart/pic-1.png" class="rounded-circle z-depth-0" alt="avatar image" height="25">
+                    <img src="../../../assets/img/faces-clipart/pic-1.png" class="rounded-circle z-depth-0"
+                        alt="avatar image" height="25">
                     <span class="mx-3 hideOnPhone">{{currentUser.nombre}}</span>
                 </a>
             </li>
@@ -21,18 +25,30 @@
             <li class="nav-item my-auto dropdown pointer">
                 <a class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="pi pi-globe mt-1">
-                        <span class="badge badge-success" style="font-size: .5rem">1</span>
+                        <span class="badge badge-success" style="font-size: .5rem">2</span>
                     </i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="min-width:20rem !important;">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink"
+                    style="min-width:20rem !important;">
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
                                 <div class="mb-1">
-                                    <h6 class="m-0" style="font-size: 1rem">Administración SIIE</h6>
-                                    <span class="text-muted" style="font-size: .8rem">Bienvenido a SIIE...</span>
+                                    <h6 class="m-0" style="font-size: 1rem">Tiempo excedido en un proceso</h6>
+                                    <span class="text-muted" style="font-size: .8rem">WORK_UNIT: 3BDQZF6J Ha excedido el
+                                        tiempo en el proceso T600</span>
                                 </div>
-                                <small class="text-muted">Hace 3 días</small>
+                                <small class="text-muted">Hace 4 días</small>
+                            </div>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div class="mb-1">
+                                    <h6 class="m-0" style="font-size: 1rem">Tiempo excedido en un proceso</h6>
+                                    <span class="text-muted" style="font-size: .8rem">WORK_UNIT: 3BDQYKMN Ha excedido el
+                                        tiempo en el proceso R500</span>
+                                </div>
+                                <small class="text-muted">Hace 6 días</small>
                             </div>
                         </a>
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -48,7 +64,8 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item text-muted pointer" style="font-size:.8rem" routerLink="/home"><i
                             class="pi pi-home mr-1" style="font-size: 1rem;"></i>Inicio</a>
-                    <a *ngIf="false" class="dropdown-item text-muted pointer" style="font-size:.7rem" routerLink="/dashboard"><i class="pi pi-th-large mr-2" style="font-size: 1rem;"></i>Panel de
+                    <a *ngIf="false" class="dropdown-item text-muted pointer" style="font-size:.7rem"
+                        routerLink="/dashboard"><i class="pi pi-th-large mr-2" style="font-size: 1rem;"></i>Panel de
                         control</a>
                     <a class="dropdown-item text-muted pointer" style="font-size:.8rem" routerLink="/profile"><i
                             class="pi pi-user mr-1" style="font-size: 1rem;"></i>Perfil</a>

@@ -30,33 +30,59 @@ export class CalenderPComponent implements OnInit {
   eventsScheduleOtro: any;
   tasks: SelectItem[];
   selectedTask: string;
+
+  alertaData: any[]=[];
+  alertCols: any[]=[];
+  alertSelectedCols: any []=[];
+
   constructor(private share: ShareService,private authenticationService: AuthenticationService) {
     this.eventsScheduleOtro = [];
     this.currentUser = this.authenticationService.currentUserValue;
-    this.cars = [
-      {label: 'Audi', value: 'Audi'},
-      {label: 'BMW', value: 'BMW'},
-      {label: 'Fiat', value: 'Fiat'},
-      {label: 'Ford', value: 'Ford'},
-      {label: 'Honda', value: 'Honda'},
-      {label: 'Jaguar', value: 'Jaguar'},
-      {label: 'Mercedes', value: 'Mercedes'},
-      {label: 'Renault', value: 'Renault'},
-      {label: 'VW', value: 'VW'},
-      {label: 'Volvo', value: 'Volvo'}
+    this.alertaData = [
+      {'MANUFACTURING_NUMBER':'IPRB0JW',
+      'WORK_UNIT':  '3BDQYKMN',
+      'PRODUCT_LINE': 'CSCAPP01',
+      'OPERATION': 'R500',
+      'STATUS': '4 RWK',
+      'OPERATION_STATUS': 'S',
+      'MACHINE_TIPE': '3841',
+      'MACHINE_MODEL': 'G4B',
+      'ORDER_STATUS': '9',
+      'DATE_RECEIVED_MFGN': '2019-09-30',
+      'CURRENT_DATE_': '2019-10-22',
+      'CURRENT_TIME_': '11:59:30',
+      'COMENTARIOS': 'TIEMPO EXCEDIDO'},
+      {'MANUFACTURING_NUMBER':'IPRB265',
+      'WORK_UNIT':  '3BDQZF6J',
+      'PRODUCT_LINE': 'CSCAPP02',
+      'OPERATION': 'T600',
+      'STATUS': '2 TEST',
+      'OPERATION_STATUS': 'A',
+      'MACHINE_TIPE': '4412',
+      'MACHINE_MODEL': 'Q3B',
+      'ORDER_STATUS': '7',
+      'DATE_RECEIVED_MFGN': '2019-10-21',
+      'CURRENT_DATE_': '2019-10-22',
+      'CURRENT_TIME_': '13:12:29',
+      'COMENTARIOS': 'TIEMPO EXCEDIDO'}
+
   ];
-    this.tasks = [
-      {label: 'Audi', value: 'Audi'},
-      {label: 'BMW', value: 'BMW'},
-      {label: 'Fiat', value: 'Fiat'},
-      {label: 'Ford', value: 'Ford'},
-      {label: 'Honda', value: 'Honda'},
-      {label: 'Jaguar', value: 'Jaguar'},
-      {label: 'Mercedes', value: 'Mercedes'},
-      {label: 'Renault', value: 'Renault'},
-      {label: 'VW', value: 'VW'},
-      {label: 'Volvo', value: 'Volvo'}
+    this.alertCols = [
+      {field: 'MANUFACTURING_NUMBER', header: 'MANUFACTURING_NUMBER'},
+      {field: 'WORK_UNIT', header: 'WORK_UNIT'},
+      {field: 'PRODUCT_LINE', header: 'PRODUCT_LINE'},
+      {field: 'OPERATION', header: 'OPERATION'},
+      {field: 'STATUS', header: 'STATUS'},
+      {field: 'OPERATION_STATUS', header: 'OPERATION_STATUS'},
+      {field: 'MACHINE_TIPE', header: 'MACHINE_TIPE'},
+      {field: 'MACHINE_MODEL', header: 'MACHINE_MODEL'},
+      {field: 'ORDER_STATUS', header: 'ORDER_STATUS'},
+      {field: 'DATE_RECEIVED_MFGN', header: 'DATE_RECEIVED_MFGN'},
+      {field: 'CURRENT_DATE_', header: 'CURRENT_DATE_'},
+      {field: 'CURRENT_TIME_', header: 'CURRENT_TIME_'},
+      {field: 'COMENTARIOS', header: 'COMENTARIOS'}
   ];
+    this.alertSelectedCols = this.alertCols;
     this.H = window.innerHeight;
   }
   get isAlumno() {
@@ -130,6 +156,26 @@ export class CalenderPComponent implements OnInit {
 
   taskClick(idTask: any) {
     alert('Task con ID: '+idTask);
+  }
+
+  exportExcel() {
+    import("xlsx").then(xlsx => {
+      const worksheet = xlsx.utils.json_to_sheet(this.alertaData);
+      const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, "reporteTodasLasAlertas");
+    });
+  }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    import("file-saver").then(FileSaver => {
+      let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+      let EXCEL_EXTENSION = '.xlsx';
+      const data: Blob = new Blob([buffer], {
+        type: EXCEL_TYPE
+      });
+      FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    });
   }
 
 }
