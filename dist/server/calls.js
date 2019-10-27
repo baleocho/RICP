@@ -8,7 +8,7 @@ var ibmdb = require('ibm_db');
 let sql_job = async (query) => {
     return new Promise(function (fulfill, reject) {
         //ibmdb.open(`DATABASE=BLUDB;HOSTNAME=${dashdb};UID=${user};PWD=${pass};PORT=50000;PROTOCOL=TCPIP`, (err, conn) => {
-        ibmdb.open(`DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=scw51046;PWD=g0wttzgjf9kg-8zp;`, (err, conn) => {
+        ibmdb.open(`DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=qct82975;PWD=9d878f9hrdmt@b9g;`, (err, conn) => {
             if (err) {
                 console.log(err);
             } else {
@@ -59,3 +59,40 @@ let sql_job = async (query) => {
     }); ///promise
 };
 /*-------------------BD PROCESS------------------*/
+
+/*-------------------BD QUERYS------------------*/
+let getAlmacen = async () => {
+    let query = `
+    SELECT 
+	*
+FROM QCT82975.ALMACEN;`;
+    let resp = await sql_job(query);
+    if (resp.results.length === 0) {
+        let respon = {
+            status: "Failed",
+            data: {},
+            msg: "Empty Data"
+        };
+        return respon;
+    }
+    if (resp.results[0].error === "") {
+        let respon = {
+            status: "Successful",
+            data: resp.results[0],
+            msg: "OK"
+        };
+        return respon;
+    } else {
+        let respon = {
+            status: "error",
+            data: resp.results[0],
+            msg: "resp.error: " + resp.error
+        }
+        return respon;
+    }
+}; //end query get sites
+/*-------------------BD QUERYS------------------*/
+
+module.exports = {
+    getAlmacen
+}
