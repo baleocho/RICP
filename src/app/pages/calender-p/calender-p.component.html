@@ -5,60 +5,57 @@
     <div class="content active">
         <h2 class="p-2 text-center">Alertas</h2>
         <hr>
-        <div class="row shadow bg-white rounded"
-            style="margin: 0 !important; max-height: 20rem !important; overflow-y: scroll;">
+        <div class="row shadow bg-white rounded">
             <div class="card w-100 m-0">
                 <div class="card-body">
                     <h5 class="card-title">Todas las alertas</h5>
                     <p class="card-text">Puedes buscar y agrupar alertas.</p>
-                    <p-table #dtUsers [columns]="usersSelectedColumns" [value]="usersData" [resizableColumns]="true"
-                    columnResizeMode="expand" [paginator]="true" [rows]="5" selectionMode="single"
-                    [(selection)]="usersSelectedUser" (onRowSelect)="onRowSelectUsers($event)">
-                    <ng-template pTemplate="caption">
-                        <div style="text-align: right; float: right">
-                            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                            <input type="text" pInputText size="50" placeholder="Global Filter"
-                                (input)="dtUsers.filterGlobal($event.target.value, 'contains')"
-                                style="width:50% !important;">
-                        </div>
-                        <div style="text-align:left;">
-                            <p-multiSelect [options]="usersCols" [(ngModel)]="usersSelectedColumns" optionLabel="header"
-                                selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}"
-                                defaultLabel="Choose Columns"></p-multiSelect>
-                        </div>
-                    </ng-template>
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
-                                {{col.header}}
-                                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-                                    ariaLabelDesc="Activate to sort in descending order"
-                                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th *ngFor="let col of columns">
-                                <input pInputText type="text"
-                                    (input)="dtUsers.filter($event.target.value, col.field, col.filterMatchMode)">
-                            </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData let-columns="columns">
-                        <tr [pSelectableRow]="rowData">
-                            <td *ngFor="let col of columns" class="ui-resizable-column">
-                                {{rowData[col.field]}}
-                            </td>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="summary" let-rowData>
-                        <div style="text-align:right">
-                            <button type="button" pButton icon="pi pi-plus" (click)="showUsersDialogToAdd()"
-                                label="Agregar"></button>
-                        </div>
-                    </ng-template>
-                </p-table>
+                        <p-table #dtUsers [columns]="alertSelectedCols" [value]="alertaData" [resizableColumns]="true"
+                            columnResizeMode="expand" [paginator]="true" [rows]="5" selectionMode="single"
+                            >
+                            <ng-template pTemplate="caption">
+                                    <div class="ui-helper-clearfix my-2" style="text-align: left">
+                                            <button type="button" pButton icon="pi pi-file-excel pi-download" iconPos="left" label="EXCEL"
+                                                (click)="exportExcel()" style="margin-right: 0.5em;" class="ui-button-success"></button>
+                                        </div>
+                                <div style="text-align: right; float: right">
+                                    <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                                    <input type="text" pInputText size="50" placeholder="Global Filter"
+                                        (input)="dtUsers.filterGlobal($event.target.value, 'contains')"
+                                        style="width:50% !important;">
+                                </div>
+                                <div style="text-align:left;">
+                                    <p-multiSelect [options]="alertCols" [(ngModel)]="alertSelectedCols" optionLabel="header"
+                                        selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}"
+                                        defaultLabel="Choose Columns"></p-multiSelect>
+                                </div>
+                            </ng-template>
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
+                                        {{col.header}}
+                                        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                                            ariaLabelDesc="Activate to sort in descending order"
+                                            ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let col of columns">
+                                        <input pInputText type="text"
+                                            (input)="dtUsers.filter($event.target.value, col.field, col.filterMatchMode)">
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                <tr [pSelectableRow]="rowData">
+                                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                                        {{rowData[col.field]}}
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
